@@ -1,0 +1,13 @@
+FROM alpine:3.6
+ARG BASHUTILS_VERSION
+ENV BASHUTILS_VERSION=${BASHUTILS_VERSION:-1.4.11} BASHUTILS=/bashutils/share BASHUTILS_HOME=/bashutils
+LABEL maintainer="Carl Seelye <cseelye@gmail.com>" version="${BASHUTILS_VERSION}" description="Container for hosting bashutils scripts"
+
+RUN apk update && \
+    apk add bash coreutils curl findutils gawk grep jq ncurses sed util-linux wget
+
+RUN mkdir /bashutils && \
+    curl https://bitbucket.org/solidfire/bashutils/get/bashutils-${BASHUTILS_VERSION}.tar.gz | tar xz -C bashutils --strip-components=1 && \
+    echo 'source ${BASHUTILS}/bashutils.sh' > /root/.bashrc
+
+ENTRYPOINT ["/bin/bash"]
