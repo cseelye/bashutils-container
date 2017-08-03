@@ -22,6 +22,7 @@ RUN apt-get update && \
         iproute2 \
         iputils-ping \
         jq \
+        locale-gen \
         openssl \
         ncurses-bin \
         pbzip2 \
