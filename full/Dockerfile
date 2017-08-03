@@ -3,8 +3,6 @@ ARG BASHUTILS_VERSION
 ENV BASHUTILS_VERSION=${BASHUTILS_VERSION:-1.4.11} BASHUTILS=/bashutils/share BASHUTILS_HOME=/bashutils
 LABEL maintainer="Carl Seelye <cseelye@gmail.com>" version="${BASHUTILS_VERSION}" description="Container for hosting bashutils scripts"
 
-COPY lsb_release /usr/bin/lsb_release
-
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install --assume-yes \
         bsdmainutils \
@@ -23,6 +21,7 @@ RUN apt-get update && \
         iputils-ping \
         jq \
         locales \
+        lsb-release \
         openssl \
         ncurses-bin \
         pbzip2 \
