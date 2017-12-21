@@ -1,6 +1,6 @@
 FROM ubuntu:16.04
 ARG BASHUTILS_VERSION
-ENV BASHUTILS_VERSION=${BASHUTILS_VERSION:-1.4.11} BASHUTILS=/bashutils/share BASHUTILS_HOME=/bashutils
+ENV BASHUTILS_VERSION=${BASHUTILS_VERSION:-1.4.15} BASHUTILS=/bashutils/share BASHUTILS_HOME=/bashutils
 LABEL maintainer="Carl Seelye <cseelye@gmail.com>" version="${BASHUTILS_VERSION}" description="Container for hosting bashutils scripts"
 
 RUN apt-get update && \
@@ -36,6 +36,7 @@ RUN apt-get update && \
         wget \
         xz-utils && \
     locale-gen en_US.UTF-8 && \
+    update-locale LANG=en_US.utf8 && \
     apt-get autoremove --assume-yes && \
     apt-get clean --assume-yes && \
     rm --force --recursive /var/lib/apt/lists/* /tmp/* /var/tmp/*
