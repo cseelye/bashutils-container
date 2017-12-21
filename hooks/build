@@ -1,0 +1,12 @@
+#!/bin/bash
+
+echo "Building tag ${SOURCE_BRANCH}"
+
+if [[ ${CACHE_TAG} == "latest" ]]; then
+    docker build -tag ${IMAGE_NAME} .
+else
+    docker build --build-arg BASHUTILS_VERSION=${SOURCE_BRANCH} \
+                 --tag ${IMAGE_NAME} \
+                 .
+fi
+
