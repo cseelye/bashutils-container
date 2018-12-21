@@ -1,6 +1,6 @@
 FROM ubuntu:16.04
 ARG BASHUTILS_VERSION
-ENV BASHUTILS_VERSION=${BASHUTILS_VERSION:-1.4.16} BASHUTILS=/bashutils/share BASHUTILS_HOME=/bashutils
+ENV BASHUTILS_VERSION=${BASHUTILS_VERSION:-1.5.1} BASHUTILS=/bashutils/share BASHUTILS_HOME=/bashutils
 LABEL maintainer="Carl Seelye <cseelye@gmail.com>" version="${BASHUTILS_VERSION}" description="Container for hosting bashutils scripts"
 
 RUN apt-get update && \
